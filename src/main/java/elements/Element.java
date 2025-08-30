@@ -61,7 +61,7 @@ public abstract class Element {
 
     public boolean isDead = false;
 
-    public Integer color;
+    public Color color;
 
     public Element(int x, int y) {
         setCoordinatesByMatrix(x, y);

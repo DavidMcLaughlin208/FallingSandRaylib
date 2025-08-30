@@ -196,7 +196,7 @@ public enum ElementType {
 
     public abstract Element createElementByMatrix(int x, int y);
 
-    public static Element createParticleByMatrix(CellularMatrix matrix, int x, int y, Vector3 vector3, ElementType elementType, Integer color, boolean isIgnited) {
+    public static Element createParticleByMatrix(CellularMatrix matrix, int x, int y, Vector3 vector3, ElementType elementType, Color color, boolean isIgnited) {
         if (matrix.isWithinBounds(x, y)) {
             Element newElement = new Particle(x, y, vector3, elementType, color, isIgnited);
             matrix.setElementAtIndex(x, y, newElement);

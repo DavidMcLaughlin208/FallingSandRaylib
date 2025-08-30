@@ -3,6 +3,7 @@ package matrix;
 import com.raylib.Colors;
 import com.raylib.Raylib;
 import com.raylib.Raylib.Color;
+import com.raylib.Raylib.Image;
 // import com.badlogic.gdx.ApplicationAdapter;
 // import com.badlogic.gdx.Gdx;
 // import com.badlogic.gdx.graphics.*;
@@ -36,6 +37,7 @@ import static com.raylib.Raylib.GenImageColor;
 import static com.raylib.Raylib.ImageDrawPixel;
 import static com.raylib.Raylib.ImageFormat;
 import static com.raylib.Raylib.LoadImageColors;
+import static com.raylib.Raylib.LoadImageFromMemory;
 import static com.raylib.Raylib.LoadTextureFromImage;
 import static com.raylib.Raylib.PIXELFORMAT_UNCOMPRESSED_R8G8B8A8;
 import static com.raylib.Raylib.UnloadTexture;
@@ -50,7 +52,7 @@ import java.util.List;
 public class CellularAutomaton {
 	public static int screenWidth = 1280; // 480;
 	public static int screenHeight = 800; //800;
-	public static int pixelSizeModifier = 6;
+	public static int pixelSizeModifier = 4;
 	public static int box2dSizeModifier = 10;
     public static Vector3 gravity = new Vector3().x(0f).y(-5f).z(0f);
     public static BitSet stepped = new BitSet(1);
@@ -92,10 +94,12 @@ public class CellularAutomaton {
 		// this.gameManager = new GameManager(this);
 		// gameManager.createPlayer(matrix.innerArraySize/2, matrix.outerArraySize/2);
 		// inputProcessors = new InputProcessors(inputManager, matrix, camera, gameManager);
-
+        
         this.image = GenImageColor(GRID_WIDTH, GRID_HEIGHT, Colors.BLACK);
         ImageFormat(image, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
         this.texture = LoadTextureFromImage(image);
+        // Raylib.UnloadImage(image);
+
 	}
 
 	public void step() {
@@ -154,6 +158,7 @@ public class CellularAutomaton {
             Thread newThread = new Thread(new DrawChunk(matrix, t, image));
             drawingThreads.add(newThread);
         }
+        matrix.updateTexture(texture);
 
 		// matrix.executeExplosions();
 
@@ -176,12 +181,15 @@ public class CellularAutomaton {
         inputManager.processInputs(matrix);
         // matrix.updatePixels(image);
         startAndWaitOnDrawThreads(drawingThreads);
-                    
-        // Update texture with new image data
+
+        // Image image = Raylib.LoadImageFromMemory(".png", updatedPixels, updatedPixels.capacity());
+        // ImageFormat(image, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
         UpdateTexture(texture, LoadImageColors(image));
 
-        
+
+
         // Draw everything
+
         BeginDrawing();
         ClearBackground(Colors.BLACK);
         

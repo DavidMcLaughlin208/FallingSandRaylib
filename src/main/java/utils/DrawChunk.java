@@ -19,6 +19,6 @@ public class DrawChunk implements Runnable {
 
     @Override
     public void run() {
-        matrix.drawProvidedChunk(colIndex);
+        matrix.drawProvidedChunk(colIndex, image);
     }
 }

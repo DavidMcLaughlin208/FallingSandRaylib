@@ -16,88 +16,96 @@ public class ColorConstants {
 
     // private static final Map<String, MaterialMap> materialsMap = new HashMap<>();
 
-    private static final Map<ElementType, List<Integer>> elementColorMap = new HashMap<>();
-    private static final Map<String, List<Integer>> namedColorMap = new HashMap<>();
-    private static final Map<String, List<Integer>> effectsColorMap = new HashMap<>();
+    private static final Map<ElementType, List<Color>> elementColorMap = new HashMap<>();
+    private static final Map<String, List<Color>> namedColorMap = new HashMap<>();
+    private static final Map<String, List<Color>> effectsColorMap = new HashMap<>();
     private static final Random random = new Random();
 
-    public static final int SAND_1 = packColor(255, 255, 0, 255);
-    public static final int SAND_2 = packColor(178, 201, 6, 255);
-    public static final int SAND_3 = packColor(233, 252, 90, 255);
+    // Movable Solids
+    private static final Raylib.Color SAND_1 = createColor(255, 255, 0, 255);
+    private static final Raylib.Color SAND_2 = createColor(178, 201, 6, 255);
+    private static final Raylib.Color SAND_3 = createColor(233, 252, 90, 255);
 
-    public static final int DIRT_1 = packColor(96, 47, 18, 255);
-    public static final int DIRT_2 = packColor(135, 70, 32, 255);
-    public static final int DIRT_3 = packColor(79, 38, 15, 255);
+    private static final Raylib.Color DIRT_1 = createColor(96, 47, 18, 255);
+    private static final Raylib.Color DIRT_2 = createColor(135, 70, 32, 255);
+    private static final Raylib.Color DIRT_3 = createColor(79, 38, 15, 255);
 
-    public static final int COAL_1 = packColor(53, 53, 53, 255);
-    public static final int COAL_2 = packColor(34, 35, 38, 255);
-    public static final int COAL_3 = packColor(65, 65, 65, 255);
+    private static final Raylib.Color COAL_1 = createColor(53, 53, 53, 255);
+    private static final Raylib.Color COAL_2 = createColor(34, 35, 38, 255);
+    private static final Raylib.Color COAL_3 = createColor(65, 65, 65, 255);
 
-    public static final int EMBER = packColor(102, 59, 0, 255);
+    private static final Raylib.Color EMBER = createColor(102, 59, 0, 255);
 
-    public static final int GUNPOWDER_1 = packColor(255, 142, 142, 255);
-    public static final int GUNPOWDER_2 = packColor(255, 91, 91, 255);
-    public static final int GUNPOWDER_3 = packColor(219, 160, 160, 255);
+    private static final Raylib.Color GUNPOWDER_1 = createColor(255, 142, 142, 255);
+    private static final Raylib.Color GUNPOWDER_2 = createColor(255, 91, 91, 255);
+    private static final Raylib.Color GUNPOWDER_3 = createColor(219, 160, 160, 255);
 
-    public static final int SNOW = packColor(255, 255, 255, 255);
+    private static final Raylib.Color SNOW = createColor(255, 255, 255, 255);
 
-    public static final int PLAYERMEAT = packColor(255, 255, 0, 255);
+    private static final Raylib.Color PLAYERMEAT = createColor(255, 255, 0, 255);
 
     // Immovable Solids
-    public static final int STONE = packColor(150, 150, 150, 255);
+    private static final Raylib.Color STONE = createColor(150, 150, 150, 255);
 
-    public static final int BRICK_1 = packColor(188, 3, 0, 255);
-    public static final int BRICK_2 = packColor(188, 3, 0, 255);
-    public static final int BRICK_3 = packColor(188, 3, 0, 255);
-    public static final int BRICK_4 = packColor(188, 3, 0, 255);
-    public static final int BRICK_5 = packColor(206, 206, 206, 255);
+    private static final Raylib.Color BRICK_1 = createColor(188, 3, 0, 255);
+    private static final Raylib.Color BRICK_2 = createColor(188, 3, 0, 255);
+    private static final Raylib.Color BRICK_3 = createColor(188, 3, 0, 255);
+    private static final Raylib.Color BRICK_4 = createColor(188, 3, 0, 255);
+    private static final Raylib.Color BRICK_5 = createColor(206, 206, 206, 255);
 
-    public static final int WOOD_1 = packColor(165, 98, 36, 255);
-    public static final int WOOD_2 = packColor(61, 33, 7, 255);
-    public static final int WOOD_3 = packColor(140, 74, 12, 255);
+    private static final Raylib.Color WOOD_1 = createColor(165, 98, 36, 255);
+    private static final Raylib.Color WOOD_2 = createColor(61, 33, 7, 255);
+    private static final Raylib.Color WOOD_3 = createColor(140, 74, 12, 255);
 
-    public static final int TITANIUM = packColor(234, 234, 234, 255);
+    private static final Raylib.Color TITANIUM = createColor(234, 234, 234, 255);
 
-    public static final int SLIME_MOLD_1 = packColor(255, 142, 243, 255);
-    public static final int SLIME_MOLD_2 = packColor(201, 58, 107, 255);
-    public static final int SLIME_MOLD_3 = packColor(234, 35, 213, 255);
+    private static final Raylib.Color SLIME_MOLD_1 = createColor(255, 142, 243, 255);
+    private static final Raylib.Color SLIME_MOLD_2 = createColor(201, 58, 107, 255);
+    private static final Raylib.Color SLIME_MOLD_3 = createColor(234, 35, 213, 255);
 
-    public static final int GROUND = packColor(68, 37, 37, 255);
+    private static final Raylib.Color GROUND = createColor(68, 37, 37, 255);
 
     // Liquids (with transparency)
-    public static final int WATER = packColor(28, 86, 234, 204); // 80% opacity
-    public static final int OIL = packColor(55, 60, 73, 204); // 80% opacity
-    public static final int ACID = packColor(0, 255, 0, 255);
-    public static final int LAVA = packColor(255, 165, 0, 255);
-    public static final int BLOOD = packColor(234, 0, 0, 204); // 80% opacity
-    public static final int CEMENT = packColor(209, 209, 209, 255);
+    private static final Raylib.Color WATER = createColor(28, 86, 234, 204); // .8f = 204/255
+
+    private static final Raylib.Color OIL = createColor(55, 60, 73, 204); // .8f = 204/255
+
+    private static final Raylib.Color ACID = createColor(0, 255, 0, 255);
+
+    private static final Raylib.Color LAVA = createColor(255, 165, 0, 255);
+
+    private static final Raylib.Color BLOOD = createColor(234, 0, 0, 204); // .8f = 204/255
+
+    private static final Raylib.Color CEMENT = createColor(209, 209, 209, 255);
 
     // Gasses (with transparency)
-    public static final int SMOKE = packColor(147, 147, 147, 127); // 50% opacity
-    public static final int FLAMMABLE_GAS = packColor(0, 255, 0, 127); // 50% opacity
-    public static final int SPARK = packColor(89, 35, 13, 255);
-    public static final int STEAM_1 = packColor(204, 204, 204, 204); // 80% opacity
-    public static final int STEAM_2 = packColor(204, 204, 204, 25);  // 10% opacity
-    public static final int STEAM_3 = packColor(204, 204, 204, 115); // 45% opacity
+    private static final Raylib.Color SMOKE = createColor(147, 147, 147, 127); // 0.5f = 127/255
+
+    private static final Raylib.Color FLAMMABLE_GAS = createColor(0, 255, 0, 127); // 0.5f = 127/255
+
+    private static final Raylib.Color SPARK = createColor(89, 35, 13, 255);
+
+    private static final Raylib.Color STEAM_1 = createColor(204, 204, 204, 204); // 0.8f = 204/255
+    private static final Raylib.Color STEAM_2 = createColor(204, 204, 204, 25);  // 0.1f = 25/255
+    private static final Raylib.Color STEAM_3 = createColor(204, 204, 204, 115); // 0.45f = 115/255
 
     // Effects
-    public static final String FIRE_NAME = "FIRE";
-    public static final int FIRE_1 = packColor(89, 35, 13, 255);
-    public static final int FIRE_2 = packColor(100, 27, 7, 255);
-    public static final int FIRE_3 = packColor(77, 10, 20, 255);
+    private static final String FIRE_NAME = "Fire";
+    private static final Raylib.Color FIRE_1 = createColor(89, 35, 13, 255);
+    private static final Raylib.Color FIRE_2 = createColor(100, 27, 7, 255);
+    private static final Raylib.Color FIRE_3 = createColor(77, 10, 20, 255);
 
     // Others
-    public static final int PARTICLE = packColor(0, 0, 0, 0);
-    public static final int BOID_1 = packColor(0, 255, 255, 0);
-    public static final int BOID_2 = packColor(200, 0, 255, 0);
-    public static final int BOID_3 = packColor(150, 255, 255, 0);
-    public static final int EMPTY_CELL = packColor(0, 0, 0, 255);
+    private static final Raylib.Color PARTICLE = createColor(0, 0, 0, 0);
+    private static final Raylib.Color BOID_1 = createColor(0, 255, 255, 0);
+    private static final Raylib.Color BOID_2 = createColor(200, 0, 255, 0);
+    private static final Raylib.Color BOID_3 = createColor(150, 255, 255, 0);
+    private static final Raylib.Color EMPTY_CELL = createColor(0, 0, 0, 255);
 
-    // Grass variants
-    public static final String GRASS = "GRASS";
-    public static final int GRASS_1 = packColor(0, 216, 93, 255);
-    public static final int GRASS_2 = packColor(0, 173, 75, 255);
-    public static final int GRASS_3 = packColor(0, 239, 103, 255);
+    private static final String GRASS = "Grass";
+    private static final Raylib.Color GRASS_1 = createColor(0, 216, 93, 255); // Fixed alpha and RGB values
+    private static final Raylib.Color GRASS_2 = createColor(0, 173, 75, 255); // Fixed alpha and RGB values
+    private static final Raylib.Color GRASS_3 = createColor(0, 239, 103, 255); // Fixed alpha and RGB values
 
 
     static {
@@ -213,20 +221,20 @@ public class ColorConstants {
         return color;
     }
 
-    private static int packColor(int r, int g, int b, int a) {
+    private int packColor(int r, int g, int b, int a) {
         return (a << 24) | (r << 16) | (g << 8) | b;
     }
 
-    public static Integer getColorByName(String name) {
+    public static Color getColorByName(String name) {
         return namedColorMap.get(name).get(random.nextInt(namedColorMap.get(name).size()));
     }
 
-    public static Integer getColorForElementType(ElementType elementType) {
-        List<Integer> colorList = elementColorMap.get(elementType);
+    public static Color getColorForElementType(ElementType elementType) {
+        List<Color> colorList = elementColorMap.get(elementType);
         return elementColorMap.get(elementType).get(random.nextInt(colorList.size()));
     }
 
-    public static Integer getColorForElementType(ElementType elementType, int x, int y) {
+    public static Color getColorForElementType(ElementType elementType, int x, int y) {
         // if (materialsMap.get(elementType.name()) != null) {
         //     int rgb = materialsMap.get(elementType.name()).getRGB(x, y);
         //     return colorCache.computeIfAbsent(String.valueOf(rgb), k-> {

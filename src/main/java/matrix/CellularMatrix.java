@@ -19,6 +19,8 @@ package matrix;
 import com.raylib.Raylib.Vector3;
 import com.raylib.Colors;
 import com.raylib.Raylib;
+import com.raylib.Raylib.Color;
+import com.raylib.Raylib.Image;
 import com.raylib.Raylib.Vector2;
 import elements.ElementType;
 import elements.EmptyCell;
@@ -50,7 +52,7 @@ public class CellularMatrix {
     private List<List<Integer>> shuffledXIndexesForThreads;
     private List<List<Integer>> shuffledYIndexesForThreads;
     private int threadedIndexOffset = 0;
-    private PixelBuffer pixelBuffer;
+    public PixelBuffer pixelBuffer;
 
     private List<List<Element>> matrix;
     public final List<List<Chunk>> chunks;
@@ -287,19 +289,29 @@ public class CellularMatrix {
     //     }
     // }
 
-    public void drawProvidedChunk(int chunkIndex) {
-        
+    public void drawProvidedChunk(int chunkIndex, Image image) {
         int x = chunkIndex % chunks.get(0).size();
         int y = chunkIndex / chunks.get(0).size();
         Chunk chunk = chunks.get(y).get(x);
+        if (chunk == null || chunk.getShouldStep() == false) {
+            return;
+        }
         for (int row = (int) chunk.getTopLeft().y(); row < chunk.getBottomRight().y(); row++) {
             List<Element> elementRow = getRow(row);
             for (int col = (int) chunk.getTopLeft().x(); col < chunk.getBottomRight().x(); col++) {
                 Element element = elementRow.get(col);
-                pixelBuffer.setPixel(col, row, element.color);
+                ImageDrawPixel(image, col, row, element.color);
+                // pixelBuffer.setPixel(col, row, element.color);
             }
         }
         
+    }
+
+    public void updateTexture(Raylib.Texture texture) {
+        // pixelBuffer.getBuffer().rewind();
+        // MemorySegment data = MemorySegment.ofBuffer(pixelBuffer.getPixelBuffer());
+        // Color[] colors = new Color[innerArraySize * outerArraySize];
+        // Raylib.UpdateTexture(texture, colors);
     }
 
     // public void drawProvidedRows(int minRow, int maxRow, ShapeRenderer sr) {
